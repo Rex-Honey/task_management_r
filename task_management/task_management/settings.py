@@ -25,11 +25,9 @@ SECRET_KEY = 'django-insecure-3#gn=%gd#8v$pd&1_*mg*%h6zlik2cnqz*l%v6p=$7uh$7kqhn
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
-
 AUTH_USER_MODEL='authentication.CustomUser'
 # Application definition
-ALLOWED_HOSTS = ['rexhoney.pythonanywhere.com']
+ALLOWED_HOSTS = ['rexhoney.pythonanywhere.com','localhost']
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
