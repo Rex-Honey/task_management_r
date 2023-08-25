@@ -72,7 +72,6 @@ api_body = {
     'modified_by_id': openapi.Schema(type=openapi.TYPE_INTEGER, example=8),
     'status': openapi.Schema(type=openapi.TYPE_STRING, example="Done"),
 }
-@csrf_exempt
 @swagger_auto_schema(tags=["Task"], operation_description="POST API to update task", operation_id="Update Task", method='post', request_body=openapi.Schema(type=openapi.TYPE_OBJECT,properties=api_body))
 @api_view(['POST'])
 @csrf_exempt
