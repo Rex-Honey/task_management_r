@@ -13,8 +13,18 @@ api_body = {
     'assignee_id': openapi.Schema(type=openapi.TYPE_INTEGER, example=8),
     'created_by_id': openapi.Schema(type=openapi.TYPE_INTEGER, example=9),
 }
+response_schema_dict = {
+        201: openapi.Schema(
+        type=openapi.TYPE_OBJECT,
+        properties={
+            'status': openapi.Schema(type=openapi.TYPE_STRING, description='Success'),
+            'message': openapi.Schema(type=openapi.TYPE_STRING, description='Task created successfully'),
+            'data': openapi.Schema(type=openapi.TYPE_OBJECT),
+        }
+    ),
+}
 @csrf_exempt
-@swagger_auto_schema(tags=["Task"], operation_description="POST API to create task", operation_id="Create Task", method='post', request_body=openapi.Schema(type=openapi.TYPE_OBJECT,properties=api_body))
+@swagger_auto_schema(tags=["Task"], operation_description="POST API to create task", operation_id="Create Task", method='post', request_body=openapi.Schema(type=openapi.TYPE_OBJECT,properties=api_body),responses=response_schema_dict)
 @api_view(['POST'])
 def Create_task(request):
     try:
@@ -72,9 +82,19 @@ api_body = {
     'modified_by_id': openapi.Schema(type=openapi.TYPE_INTEGER, example=8),
     'status': openapi.Schema(type=openapi.TYPE_STRING, example="Done"),
 }
-@swagger_auto_schema(tags=["Task"], operation_description="POST API to update task", operation_id="Update Task", method='post', request_body=openapi.Schema(type=openapi.TYPE_OBJECT,properties=api_body))
-@api_view(['POST'])
+response_schema_dict = {
+        201: openapi.Schema(
+        type=openapi.TYPE_OBJECT,
+        properties={
+            'status': openapi.Schema(type=openapi.TYPE_STRING, description='Success'),
+            'message': openapi.Schema(type=openapi.TYPE_STRING, description='Task updated successfully'),
+            'data': openapi.Schema(type=openapi.TYPE_OBJECT),
+        }
+    ),
+}
 @csrf_exempt
+@swagger_auto_schema(tags=["Task"], operation_description="POST API to update task", operation_id="Update Task", method='post', request_body=openapi.Schema(type=openapi.TYPE_OBJECT,properties=api_body),responses=response_schema_dict)
+@api_view(['POST'])
 def Update_task(request):
     try:
         if request.method!='POST':

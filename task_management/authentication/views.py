@@ -15,8 +15,18 @@ api_body = {
     'last_name': openapi.Schema(type=openapi.TYPE_STRING, example="Singh"),
     'username': openapi.Schema(type=openapi.TYPE_STRING, example="user3"),
 }
+response_schema_dict = {
+        201: openapi.Schema(
+        type=openapi.TYPE_OBJECT,
+        properties={
+            'status': openapi.Schema(type=openapi.TYPE_STRING, description='Success'),
+            'message': openapi.Schema(type=openapi.TYPE_STRING, description='User Registered successfully'),
+            'data': openapi.Schema(type=openapi.TYPE_OBJECT),
+        }
+    ),
+}
 @csrf_exempt
-@swagger_auto_schema(tags=["Authentication"], operation_description="POST API to create user", operation_id="Create User", method='post', request_body=openapi.Schema(type=openapi.TYPE_OBJECT,properties=api_body))
+@swagger_auto_schema(tags=["Authentication"], operation_description="POST API to create user", operation_id="Create User", method='post', request_body=openapi.Schema(type=openapi.TYPE_OBJECT,properties=api_body),responses=response_schema_dict)
 @api_view(['POST'])
 def Create_user(request):
     try:
